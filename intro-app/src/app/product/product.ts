@@ -1,20 +1,30 @@
- 
- export interface IProduct {
-     imageUrl: string;
-     productName: string;
-     productCode: string;
-     price: number;
+
+export interface IProduct {
+    imageUrl: string;
+    productName: string;
+    productCode: string;
+    price: number;
+    rating: number;
     //  addPrice (value: number): number
- }
+}
 
- export class Product implements IProduct {
-     imageUrl: string = "";
-     productCode: string = "";
-     productName: string = "";
-     price: number = 0;
-     
-     addPrice(newPrice:number){
-         return 0; 
-     }
+export interface ITodo {
+    userId: number;
+    Id: number;
+    title: string;
+    completed: boolean;
+}
 
- }
+export class Product implements IProduct {
+    imageUrl: string = "";
+    productCode: string = "";
+    productName: string = "";
+    price: number = 0;
+    rating: number = 0;
+    totalProducts: number = 10;
+
+    addPrice(newPrice: number) {
+        return 0;
+    }
+
+}

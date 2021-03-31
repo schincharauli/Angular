@@ -1,40 +1,43 @@
-
 <h3 class="text-muted">Product List</h3>
 
-
 <div class="row p-x3">
-  <button class="btn btn-warning col-2" (click)="toggleImages()"> {{ showImages? "Hide" : "Show"}} imaeges</button>
-<div class="col-4">
-  <input type="search" class="form-control" [(ngModel)]="filterValue" />
-</div>
-<div class="col-6">
-  <span>filter by:</span> <b>{{ filterValue}} </b>
-
-</div>
+  <button class="btn btn-warning col-2" (click)="toggleImages()">
+    {{ showImages ? "Hide" : "Show" }} imaeges
+  </button>
+  <div class="col-4">
+    <input type="search" class="form-control" [(ngModel)]="filterValue" />
+  </div>
+  <div class="col-6">
+    <span>filter by:</span> <b>{{ filterValue }} </b>
+  </div>
 </div>
 
 <table class="table">
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th>Product Name</th>
-        <th>Product Code </th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng *ngFor="let item of filteredProducts" >
-        <td>
-            <img [src]="item.imageUrl " 
-            [alt]="item.productName"
-            [style.height.px]="imageHeight"
-            *ngIf="showImages" 
-            >
-            
-        </td>
-        <td>{{item.productName}}</td>
-        <td>{{item.productCode |convertToSpace: "-" }}</td>
-        <td>{{item.price | currency: "USD":symbol:"1.2-2"}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Product Name</th>
+      <th>Product Code</th>
+      <th>Price</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng *ngFor="let item of filteredProducts">
+      <td>
+        <img
+          [src]="item.imageUrl"
+          [alt]="item.productName"
+          [style.height.px]="imageHeight"
+          *ngIf="showImages"
+        />
+      </td>
+      <td>{{ item.productName }}</td>
+      <td>{{ item.productCode | convertToSpace: "-" }}</td>
+      <td>{{ item.price | currency: "USD":symbol:"1.2-2" }}</td>
+      <td>
+        <app-rating [rating]="item.rating" (onChange)="onRatingChange($event)"></app-rating>
+      </td>
+    </tr>
+  </tbody>
+</table>
