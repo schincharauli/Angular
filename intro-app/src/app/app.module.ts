@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccountComponent } from './account/account.component';
 import { dashboard } from './dashboard/dashboard.component';
 import { ProductList } from './product/product-list.component';
-import {ConvertToSpace} from './shared/pipes/convertToSpace.pipe'
+import {ConvertToSpace} from './shared/pipes/convertToSpace.pipe';
+import { RatingComponent } from './rating/rating.component'
 
 
 @NgModule({
@@ -16,12 +18,14 @@ import {ConvertToSpace} from './shared/pipes/convertToSpace.pipe'
     AccountComponent,
     dashboard,
     ProductList,
-    ConvertToSpace
+    ConvertToSpace,
+    RatingComponent
   ],
   imports: [
     BrowserModule, 
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
     
   ],
   providers: [],
