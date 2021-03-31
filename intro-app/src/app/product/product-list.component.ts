@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { IProduct } from "./product";
 
 
@@ -8,7 +8,7 @@ import { IProduct } from "./product";
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.scss'],
 })
-export class ProductList implements OnInit{
+export class ProductList implements OnInit, OnDestroy{
     private _filterValue: string = ''; 
 
     showImages: boolean = false;
@@ -62,5 +62,7 @@ set filterValue(value:string){
 toggleImages():void {
     this.showImages = !this.showImages; 
 }
+
+ngOnDestroy(): void {}
 
 }
