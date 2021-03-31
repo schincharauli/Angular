@@ -1,11 +1,15 @@
 
+<div class="container-fluid">
+    <!-- <h1>SPA - single pae application</h1>
+    <h2>JIT - </h2>  
+    <h2>AOT</h2>
+    
+    <button (click)="changeComponent(account.title)" class="btn btn-primary">Show Account</button>
+    <button (click)="changeComponent(dashboard.title)" class="btn btn-primary ms-1">Show Dashboard </button>
+    
+    <app-account *ngIf="currentPage.title === account.title"></app-account>
+    <app-dashboard *ngIf="currentPage.title === dashboard.title"></app-dashboard>  -->
 
-<h1>SPA - single pae application</h1>
-<h2>JIT - </h2>  
-<h2>AOT</h2>
 
-<button (click)="changeComponent(account.title)">Show Account</button>
-<button (click)="changeComponent(dashboard.title)">Show Dashboard </button>
-
-<app-account *ngIf="currentPage.title === account.title"></app-account>
-<app-dashboard *ngIf="currentPage.title === dashboard.title"></app-dashboard> 
+    <app-product-list></app-product-list>
+</div>
