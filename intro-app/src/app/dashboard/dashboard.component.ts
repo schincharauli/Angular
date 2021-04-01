@@ -7,7 +7,7 @@ import{Component, OnInit, OnDestroy} from '@angular/core'
     styleUrls: ['./dashboard.component.scss'],
 })
 
-export class dashboard implements OnInit, OnDestroy {
+export class dashboardComponent implements OnInit, OnDestroy {
     title: string = 'Dashboard template string';
     
     ngOnInit(){
