@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http'
 
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 
-import { IArticleResponse } from './article';
-import {BASE_API_URL, API_KEY} from '../../config';
+import { IArticle, IArticleResponse } from './article';
+import { BASE_API_URL, API_KEY } from '../../config';
 
 @Injectable({
     providedIn: 'root',
@@ -15,12 +16,38 @@ export class ArticleService {
 
     constructor(private http: HttpClient) { }
 
-    getArticles(): Observable<IArticleResponse> {
+    getArticles(
+        query: string,
+        pageSize: number,
+        page: number
+    ): Observable<IArticleResponse> {
         return this.http.get<IArticleResponse>(
-        `${this.baseUrl}/everything?apiKey=${this.apiKey}&q=Apple&pageSize=21&page=1`);
+            `${this.baseUrl}/everything?apiKey=${this.apiKey}&q=${query}&pageSize=${pageSize}&page=${page}&sortBy=popularity`
+        )
+            .pipe(
+                tap(null, catchError(this.handleError))
+            );
     }
-    // getArticle(artcleId: number): Observable<IArticle>{
-    //     return this.http.get<IArticle>(`${this.baseUrl}/posts/${artcleId}`);
-    // }
+
+    getArticle(articleTitle: string): Observable<IArticleResponse> {
+        return this.http.get<IArticleResponse>(
+            `${this.baseUrl}/everything?apiKey=${this.apiKey}&qInTitle=${articleTitle}&pageSize=1&page=1`);
+
+    }
+
+
+    private handleError(error: HttpErrorResponse) {
+        let errorMessage = '';
+
+        if (error.error instanceof ErrorEvent) {
+
+            errorMessage = `An error occured: ${error.error.message}`;
+        } else {
+            errorMessage = `Server returned code: ${error.status}, error message is: ${error.message}`;
+        }
+        // console.log('HandleError', errorMessage);
+        return throwError(errorMessage);
+    }
+
 
 }
