@@ -16,7 +16,8 @@ import { RatingComponent } from './rating/rating.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ArticlesComponent } from './articles/articles.component';
-import { ArticleCardComponent } from './articles/article-card/article-card.component'
+import { ArticleCardComponent } from './articles/article-card/article-card.component';
+import { ArticleDetailComponent } from './articles/article-detail/article-detail.component'
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ArticleCardComponent } from './articles/article-card/article-card.compo
     NavigationComponent,
     ArticlesComponent,
     ArticleCardComponent,
+    ArticleDetailComponent,
 
   ],
   imports: [
@@ -56,6 +58,10 @@ import { ArticleCardComponent } from './articles/article-card/article-card.compo
       {
         path: 'home',
         component: HomeComponent,
+      },
+      {
+        path: 'articles/:title',
+        component: ArticleDetailComponent,
       },
       {
         path: '',
