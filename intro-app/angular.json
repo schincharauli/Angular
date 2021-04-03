@@ -24,14 +24,14 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "tsconfig.app.json", 
             "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootsrtrap.min.css",
+              "node_modules/bootstrap/dist/scss/bootsrtrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
